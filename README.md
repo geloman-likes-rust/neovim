@@ -3,7 +3,7 @@
 ## Installation & Setup
 
 
-**1.** `Clone` this repo
+**1.** **`Clone`** this repo
 ```
 git clone https://github.com/geloman-likes-rust/neovim-as-pde.git ~/.nvim
 ```
