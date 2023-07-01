@@ -17,3 +17,26 @@ git clone https://github.com/geloman-likes-rust/neovim-as-pde.git ~/.nvim
 ```
 source ~/.bashrc
 ```
+
+## Package Manager
+- lazy
+
+## Plugins
+
+- autopairs
+- autotag
+- barbecue
+- css-colors
+- formatter
+- lualine
+- nvim-tree
+- nvim-web-devicons
+- todo-comments
+- trouble
+- vim-matchtag
+- fugitive
+- telescope
+- mason
+- which-key
+- indent-blankline
+- nvim-treesitter
