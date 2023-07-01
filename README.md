@@ -19,7 +19,7 @@ source ~/.bashrc
 ```
 
 ## Package Manager
-- lazy
+- [lazy](https://github.com/folke/lazy.nvim)
 
 ## Plugins
 
