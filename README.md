@@ -24,7 +24,7 @@ nvim
 ```
 
 ## Package Manager
-- [`lazy`](https://github.com/folke/lazy.nvim)
+- [**`lazy`**](https://github.com/folke/lazy.nvim)
 
 ## Plugins
 
