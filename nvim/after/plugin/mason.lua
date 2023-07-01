@@ -22,12 +22,11 @@ end
 
 -- Enable the following language servers
 local language_servers = {
-  -- rust_analyzer = {},
-  -- tsserver = {},
+  bashls = {},
   cssls = {},
-  -- tailwindcss = {},
   emmet_ls = {},
-  html = {},
+  jsonls = {},
+  pylsp = {},
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
