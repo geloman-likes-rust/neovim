@@ -23,20 +23,20 @@ source ~/.bashrc
 
 ## Plugins
 
-- autopairs
-- autotag
-- barbecue
-- css-colors
-- formatter
-- lualine
-- nvim-tree
-- nvim-web-devicons
-- todo-comments
-- trouble
-- vim-matchtag
-- fugitive
-- telescope
-- mason
-- which-key
-- indent-blankline
-- nvim-treesitter
+- `autopairs`
+- `autotag`
+- `barbecue`
+- `css-colors`
+- `formatter`
+- `lualine`
+- `nvim-tree`
+- `nvim-web-devicons`
+- `todo-comments`
+- `trouble`
+- `vim-matchtag`
+- `fugitive`
+- `telescope`
+- `mason`
+- `which-key`
+- `indent-blankline`
+- `nvim-treesitter`
