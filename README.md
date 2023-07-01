@@ -18,6 +18,11 @@ git clone https://github.com/geloman-likes-rust/neovim-as-pde.git ~/.nvim
 source ~/.bashrc
 ```
 
+4. Sanity `check`
+```
+nvim
+```
+
 ## Package Manager
 - [`lazy`](https://github.com/folke/lazy.nvim)
 
