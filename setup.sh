@@ -23,7 +23,8 @@ install_miniconda() {
 	chmod +x ~/miniconda.sh
 	~/miniconda.sh -b -p ~/.miniconda && echo "yes" | ~/.miniconda/bin/conda init
 	rm -rdf ~/miniconda.sh
-	. "$HOME"/.bashrc
+	[ "$SHELL" = "bash" ] && . "$HOME"/.bashrc
+	[ "$SHELL" = "zsh" ] && . "$HOME"/.zshrc
 }
 
 ## FD-FIND - need this for telescope live-grep
