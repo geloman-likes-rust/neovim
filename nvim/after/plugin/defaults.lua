@@ -1,5 +1,14 @@
-local opts = { noremap = true, silent = true }
-local keymap = vim.api.nvim_set_keymap
+local function keymap(mode, lhs, rhs, opts)
+  opts = opts or {}
+  vim.keymap.set(mode, lhs, rhs, opts)
+end
+
+-- Default DiagnosticSign
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl })
+end
 
 -- tab space
 vim.o.tabstop = 2
@@ -12,8 +21,8 @@ vim.o.autoindent = true
 -- file explorer
 vim.g.netrw_banner = 0 -- disable explorer banner
 
--- disable highlight on search
-vim.o.hlsearch = false
+-- enable highlight on search
+vim.o.hlsearch = true
 
 -- sync clipboard between os and neovim.
 vim.o.clipboard = 'unnamedplus'
@@ -49,36 +58,46 @@ vim.wo.relativenumber = true
 -- set colorscheme
 vim.cmd.colorscheme 'onedark'
 
--- window's width resize
-keymap("n", "=", "[[<cmd>vertical resize +5<cr>]]", opts)
-keymap("n", "-", "[[<cmd>vertical resize -5<cr>]]", opts)
+-- window's resize
+keymap("n", "=", ":vertical resize +5<cr>", { noremap = true, silent = true, desc = "[=] (+) vertical resize" })
+keymap("n", "-", ":vertical resize -5<cr>", { noremap = true, silent = true, desc = "[-] (-) vertical resize" })
+keymap("n", "_", "horizontal resize -3<cr>", { noremap = true, silent = true, desc = "[_] (-) horizontal resize" })
+keymap("n", "+", "horizontal resize +3<cr>", { noremap = true, silent = true, desc = "[+] (+) horizontal resize" })
 
--- window's height resize
-keymap("n", "_", "[[<cmd>horizontal resize -3<cr>]]", opts)
-keymap("n", "+", "[[<cmd>horizontal resize +3<cr>]]", opts)
+-- toggle highlight search
+keymap("n", "<leader>q", ":set hlsearch!<cr>", { noremap = true, silent = true, desc = "toggle highlight search" })
 
--- toggle filetree
-vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
+-- toggle Lexplore
+keymap("n", "<leader>e", ":Lex 25<cr>", { noremap = true, silent = true, desc = "toggle Lex 25" })
 
--- toggle trouble
-vim.keymap.set("n", "<leader>L", ":TroubleToggle<CR>", opts)
+-- close current buffer
+keymap("n", "q", "<C-w>q")
 
--- git diffsplit
-vim.keymap.set("n", "<leader>gs", ":Gvdiffsplit<CR>", opts)
+-- toggle cursorline
+keymap("n", "<cr>", ":set cursorline!<cr>", { noremap = true, silent = true })
 
--- switch to previous/next file
-vim.keymap.set("n", "<leader>n", ":bprevious<CR>", opts)
-vim.keymap.set("n", "<leader>N", ":bNext<CR>", opts)
+-- fold selected line
+keymap("v", "f", "zf", { silent = true })
 
 -- move cursor to bottom/top and center the screen
-vim.keymap.set("n", "H", "Hzz")
-vim.keymap.set("n", "L", "Lzz")
-vim.keymap.set("n", "G", "Gzz")
+keymap("n", "H", "Hzz")
+keymap("n", "L", "Lzz")
+keymap("n", "G", "Gzz")
+
+-- switch buffers
+keymap("n", "<C-n>", ":bNext<cr>", { silent = true })
+keymap("n", "<left>", ":bprevious<cr>", { silent = true })
+keymap("n", "<right>", ":bNext<cr>", { silent = true })
+
+-- switch tabs
+keymap("n", "<S-tab>", ":tabprevious<cr>", { silent = true })
+keymap("n", "<tab>", ":tabNext<cr>", { silent = true })
+keymap("n", "<C-q>", ":tabclose<cr>", { silent = true })
 
 -- here because.. haha i don't know either LOL
-vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+keymap({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
+keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
 -- format on save
 vim.api.nvim_command('autocmd BufWritePre * Format')

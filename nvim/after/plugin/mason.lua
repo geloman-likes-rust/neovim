@@ -22,11 +22,6 @@ end
 
 -- Enable the following language servers
 local language_servers = {
-  bashls = {},
-  cssls = {},
-  emmet_ls = {},
-  jsonls = {},
-  pylsp = {},
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
