@@ -22,26 +22,3 @@ source ~/.bashrc
 ```
 nvim
 ```
-
-## Package Manager
-- [**`lazy`**](https://github.com/folke/lazy.nvim)
-
-## Plugins
-
-- `autopairs`
-- `autotag`
-- `barbecue`
-- `css-colors`
-- `formatter`
-- `fugitive`
-- `indent-blankline`
-- `lualine`
-- `mason`
-- `nvim-tree`
-- `nvim-treesitter`
-- `nvim-web-devicons`
-- `telescope`
-- `todo-comments`
-- `trouble`
-- `vim-matchtag`
-- `which-key`
