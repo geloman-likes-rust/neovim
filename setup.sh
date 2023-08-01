@@ -23,8 +23,6 @@ install_miniconda() {
 	chmod +x ~/miniconda.sh
 	~/miniconda.sh -b -p ~/.miniconda && echo "yes" | ~/.miniconda/bin/conda init
 	rm -rdf ~/miniconda.sh
-	[ "$SHELL" = "bash" ] && . "$HOME"/.bashrc
-	[ "$SHELL" = "zsh" ] && . "$HOME"/.zshrc
 }
 
 ## FD-FIND - need this for telescope live-grep
@@ -32,7 +30,7 @@ install_miniconda() {
 install_fd() {
 	[ -z "$(which fd 2> /dev/null)" ] || return
 	echo "Installing fd-find......................................"
-	conda install -y -c conda-forge fd-find
+	~/.miniconda/bin/conda install -y -c conda-forge fd-find
 }
 
 ## RIPGREP - need this for telescope live-grep
@@ -40,7 +38,7 @@ install_fd() {
 install_ripgrep() {
 	[ -z "$(which rg 2> /dev/null)" ] || return
 	echo "Installing ripgrep......................................"
-	conda install -y -c conda-forge ripgrep
+	~/.miniconda/bin/conda install -y -c conda-forge ripgrep
 }
 
 ## creates symbolic-link --> .config/nvim
