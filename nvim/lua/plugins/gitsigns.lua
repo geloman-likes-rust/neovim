@@ -1,21 +1,24 @@
 return {
   'lewis6991/gitsigns.nvim',
-  opts = {
-    signs = {
-      add = { text = '+' },
-      change = { text = '~' },
-      delete = { text = '_' },
-      topdelete = { text = '‾' },
-      changedelete = { text = '~' },
-    },
-    numhl = true,
-    current_line_blame_opts = {
-      virt_text = true,
-      virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
-      delay = 100,
-    },
-    preview_config = {
-      border = "rounded"
-    },
-  }
+
+  ft = { "gitcommit", "diff" },
+
+  config = function()
+    require("config.plugin.gitsigns")
+  end,
+
+  init = function()
+    vim.api.nvim_create_autocmd({ "BufRead" }, {
+      group = vim.api.nvim_create_augroup("GitSignsLazyLoad", { clear = true }),
+      callback = function()
+        vim.fn.system("git -C " .. '"' .. vim.fn.expand "%:p:h" .. '"' .. " rev-parse")
+        if vim.v.shell_error == 0 then
+          vim.api.nvim_del_augroup_by_name "GitSignsLazyLoad"
+          vim.schedule(function()
+            require("lazy").load { plugins = { "gitsigns.nvim" } }
+          end)
+        end
+      end,
+    })
+  end,
 }

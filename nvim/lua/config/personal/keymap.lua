@@ -1,19 +1,17 @@
+--- keymaps
 local function keymap(mode, lhs, rhs, opts)
-  opts = opts or {}
-  vim.keymap.set(mode, lhs, rhs, opts)
+    opts = opts or {}
+    vim.keymap.set(mode, lhs, rhs, opts)
 end
 
 -- window's resize
-keymap("n", "=", ":vertical resize +5<cr>", { noremap = true, silent = true, desc = "[=] (+) vertical resize" })
-keymap("n", "-", ":vertical resize -5<cr>", { noremap = true, silent = true, desc = "[-] (-) vertical resize" })
-keymap("n", "_", "horizontal resize -3<cr>", { noremap = true, silent = true, desc = "[_] (-) horizontal resize" })
-keymap("n", "+", "horizontal resize +3<cr>", { noremap = true, silent = true, desc = "[+] (+) horizontal resize" })
+keymap("n", "=", "<cmd>vertical resize +5<cr>", { noremap = true, silent = true, desc = "[=] (+) vertical resize" })
+keymap("n", "-", "<cmd>vertical resize -5<cr>", { noremap = true, silent = true, desc = "[-] (-) vertical resize" })
+keymap("n", "_", "<cmd>horizontal resize -3<cr>", { noremap = true, silent = true, desc = "[_] (-) horizontal resize" })
+keymap("n", "+", "<cmd>horizontal resize +3<cr>", { noremap = true, silent = true, desc = "[+] (+) horizontal resize" })
 
 -- toggle highlight search
 keymap("n", "<leader>hl", ":set hlsearch!<cr>", { noremap = true, silent = true, desc = "toggle [H]ighlight [S]earch" })
-
--- toggle Lexplore
-keymap("n", "<leader>e", ":Lex 25<cr>", { noremap = true, silent = true, desc = "toggle Lex 25" })
 
 -- close current buffer
 keymap("n", "q", "<C-w>q")
@@ -26,7 +24,7 @@ keymap("n", "H", "Hzz")
 keymap("n", "L", "Lzz")
 keymap("n", "G", "Gzz")
 
-keymap("n", "<leader>bf", ":buffers<cr>", { silent = true })
+keymap("n", "<leader>b", ":buffers<cr>", { silent = true })
 -- switch buffers
 keymap("n", "<C-n>", ":bNext<cr>", { silent = true })
 keymap("n", "<left>", ":bprevious<cr>", { silent = true })
