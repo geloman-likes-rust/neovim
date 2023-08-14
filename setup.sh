@@ -3,7 +3,7 @@
 ## NEOVIM LATEST VERSION - STABLE
 #---------------------------------------------------------------------
 install_neovim() {
-	[ -z "$(which nvim 2> /dev/null)" ] || return
+	[ -n "$(command -v nvim)" ] && return
 	echo "Installing neovim......................................"
 	cd "$HOME" && curl -s -JLO https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
 	tar xzvf nvim-linux64.tar.gz
@@ -28,7 +28,7 @@ install_miniconda() {
 ## FD-FIND - need this for telescope live-grep
 #---------------------------------------------------------------------
 install_fd() {
-	[ -z "$(which fd 2> /dev/null)" ] || return
+	[ -n "$(command -v fd)" ] && return
 	echo "Installing fd-find......................................"
 	~/.miniconda/bin/conda install -y -c conda-forge fd-find
 }
@@ -36,7 +36,7 @@ install_fd() {
 ## RIPGREP - need this for telescope live-grep
 #---------------------------------------------------------------------
 install_ripgrep() {
-	[ -z "$(which rg 2> /dev/null)" ] || return
+	[ -n "$(command -v rg)" ] && return
 	echo "Installing ripgrep......................................"
 	~/.miniconda/bin/conda install -y -c conda-forge ripgrep
 }
