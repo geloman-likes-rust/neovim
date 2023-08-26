@@ -4,6 +4,21 @@ local function keymap(mode, lhs, rhs, opts)
     vim.keymap.set(mode, lhs, rhs, opts)
 end
 
+local toggle_numberln = function()
+    vim.cmd "set number!"
+    vim.cmd "set relativenumber!"
+end
+
+-- config nvim
+keymap('n', '<leader>cn', '<cmd>e ~/.dotfiles/nvim<cr>', { silent = true, desc = "Config Nvim" })
+
+-- toggle statusline
+keymap("n", "<leader>l1", "<cmd>set laststatus=1<cr>", { noremap = true, silent = true, desc = "hide statusline" })
+keymap("n", "<leader>l2", "<cmd>set laststatus=2<cr>", { noremap = true, silent = true, desc = "show statusline" })
+
+-- toggle number line
+keymap("n", "<leader>ln", toggle_numberln, { noremap = true, silent = true, desc = "toggle number line" })
+
 -- window's resize
 keymap("n", "=", "<cmd>vertical resize +5<cr>", { noremap = true, silent = true, desc = "[=] (+) vertical resize" })
 keymap("n", "-", "<cmd>vertical resize -5<cr>", { noremap = true, silent = true, desc = "[-] (-) vertical resize" })
