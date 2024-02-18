@@ -1,1 +1,7 @@
-return { 'folke/which-key.nvim', keys = { "<c-w>", "z", "g", '"', "'" }, cmd = "WhichKey", opts = {} }
+return {
+    'folke/which-key.nvim',
+    event = "VeryLazy",
+    config = function()
+        require("which-key").setup()
+    end
+}
