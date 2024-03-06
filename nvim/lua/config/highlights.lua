@@ -4,12 +4,29 @@ end
 
 -- CUSTOM HIGHLIGHTS
 highlight("Visual", { reverse = true })
-highlight("Search", { reverse = true })
-highlight("CurSearch", { fg = "#d6ffd6", bg = "#03c988" })
-highlight("IncSearch", { fg = "#d6ffd6", bg = "#03c988" })
-highlight("CursorLine", { bold = true, bg = "#2a324a" })
-highlight("CursorColumn", { bold = true, bg = "#2a324a" })
+highlight("Search", { bg = "#2a324a" })
+highlight("CurSearch", { reverse = true })
+highlight("IncSearch", { reverse = true })
+highlight("CursorLine", { bg = "#2a324a" })
+highlight("CursorColumn", { bg = "#2a324a" })
+
+-- TELESCOPE HIGHLIGHTS
 highlight("TelescopeTitle", { reverse = true })
+highlight("TelescopeSelection", { bg = '#34bfd0', fg = '#283347' })
+highlight("TelescopePromptCounter", { fg = '#34bfd0' })
+
+-- LAZY HIGHLIGHTS
+highlight("LazyNormal", { blend = 0, link = 'none' })
+highlight("LazyProp", { blend = 0, link = 'none' })
+highlight("LazyDimmed", { blend = 0, link = 'none' })
+
+-- MASON HIGHLIGHTS
+highlight("MasonNormal", { blend = 0, link = 'none' })
+
+-- TREESITTER-CONTEXT HIGHLIGHTS
+highlight("TreesitterContext", { blend = 0, link = 'none' })
+highlight("TreesitterContextBottom", { underdotted = true })
+highlight("TreesitterContextLineNumberBottom", { fg = '#93a4c3', underdotted = true })
 
 -- GIT HIGHLIGHTS
 highlight("GitSignsUntracked", { fg = "#34bfd0" })

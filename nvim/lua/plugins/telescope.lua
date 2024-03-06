@@ -2,6 +2,11 @@ return {
     'nvim-telescope/telescope.nvim',
     version = '*',
     cmd = "Telescope",
+    init = function()
+        vim.keymap.set('n', '<leader>cn', function()
+            require('telescope.builtin').find_files { cwd = vim.fn.stdpath 'config' }
+        end, { desc = 'neovim config files' })
+    end,
     keys = function()
         local Command = function(command) return function() vim.cmd(command) end end
         return {
@@ -28,16 +33,34 @@ return {
             { "<leader>gb",      Command("Telescope git_branches"),   desc = "[G]it [B]ranches" },
             { "<leader>gts",     Command("Telescope git_stash"),      desc = "Git Stash" },
             { "<leader>gtb",     Command("Telescope git_bcommits"),   desc = "Git Current Buffer Commits" },
+            {
+                "<leader>gw",
+                function()
+                    local telescope = require("telescope")
+                    telescope.load_extension("git_worktree")
+                    telescope.extensions.git_worktree.git_worktrees()
+                end,
+                desc = "Git Worktrees"
+            },
+            {
+                "<leader>cw",
+                function()
+                    local telescope = require("telescope")
+                    telescope.load_extension("git_worktree")
+                    telescope.extensions.git_worktree.create_git_worktree()
+                end,
+                desc = "Create Git Worktree"
+            },
 
             -- TELESCOPE'S EASTER EGG
-            { "<leader>ps",      Command("Telescope planets"),        desc = "Love and Peace" },
+            { "<leader>ps", Command("Telescope planets"),   desc = "Love and Peace" },
 
             -- HELP TAGS
-            { "<leader>hh",      Command("Telescope help_tags"),      desc = "Search Help" },
+            { "<leader>hh", Command("Telescope help_tags"), desc = "Search Help" },
 
         }
     end,
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    dependencies = { 'nvim-lua/plenary.nvim', 'ThePrimeagen/git-worktree.nvim' },
     opts = function()
         local ignore_files = { ".git", "target", "node_modules", "wwwroot/lib", "**/Debug", "**.cache", "**/assets",
             "**.png",
@@ -64,14 +87,14 @@ return {
 
                 live_grep = {
                     layout_config = {
-                        preview_width = 0.55
+                        preview_width = 0.60
                     },
                 },
 
                 lsp_references = {
                     initial_mode = "normal",
                     layout_config = {
-                        preview_width = 0.55
+                        preview_width = 0.60,
                     },
                 },
 
@@ -85,7 +108,7 @@ return {
                 },
 
                 colorscheme = {
-                    initial_mode = "normal",
+                    initial_mode = "insert",
                     layout_config = {
                         width = 0.40,
                         height = 0.60,
@@ -170,7 +193,8 @@ return {
                     width = 0.95,
                 },
 
-                selection_caret = "  ",
+                -- selection_caret = "  ",
+                selection_caret = "  ",
                 prompt_prefix = "   ",
             },
         }
